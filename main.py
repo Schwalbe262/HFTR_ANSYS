@@ -5,6 +5,7 @@
 import ScriptEnv
 ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
 oDesktop.RestoreWindow()
+oDesktop.OpenProject("D:/transformer_2021/TR_2021_07_09.aedt")
 oProject = oDesktop.SetActiveProject("TR_2021_07_09")
 oDesign = oProject.SetActiveDesign("HFTR")
 oEditor = oDesign.SetActiveEditor("3D Modeler")
