@@ -2,12 +2,12 @@ oEditor = oDesign.SetActiveEditor("3D Modeler")
 oEditor.CreateBox(
 	[
 		"NAME:BoxParameters",
-		"XPosition:="		, "-1.1mm",
-		"YPosition:="		, "-1mm",
-		"ZPosition:="		, "0mm",
-		"XSize:="		, "0.8mm",
-		"YSize:="		, "1.5mm",
-		"ZSize:="		, "-0.9mm"
+		"XPosition:="		, "-air",
+		"YPosition:="		, "-air",
+		"ZPosition:="		, "-air",
+		"XSize:="		, "2*air",
+		"YSize:="		, "2*air",
+		"ZSize:="		, "2*air"
 	], 
 	[
 		"NAME:Attributes",
@@ -23,24 +23,6 @@ oEditor.CreateBox(
 		"IsMaterialEditable:="	, True,
 		"UseMaterialAppearance:=", False,
 		"IsLightweight:="	, False
-	])
-oEditor.ChangeProperty(
-	[
-		"NAME:AllTabs",
-		[
-			"NAME:Geometry3DAttributeTab",
-			[
-				"NAME:PropServers", 
-				"Box1"
-			],
-			[
-				"NAME:ChangedProps",
-				[
-					"NAME:Name",
-					"Value:="		, "Air"
-				]
-			]
-		]
 	])
 oModule = oDesign.GetModule("BoundarySetup")
 oModule.AssignRadiation(
