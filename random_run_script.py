@@ -6,7 +6,7 @@ import csv
 import time
 
 
-REFERENCE_SCRIPT_FILE_NAME = "run_ansys_ref.py"
+REFERENCE_SCRIPT_FILE_NAME = f'D:\script\\run_ansys_ref.py"
     
 
 def run_simul(version_idx_str):
@@ -30,11 +30,13 @@ def run_simul(version_idx_str):
     #1 Make Folder
     folder_name = f'SIMUL_{version_idx_str}'
     #os.mkdir(folder_name)
-    os.mkdir(os.path.join('ML_v1',folder_name))
+    #os.mkdir(os.path.join('ML_v1',folder_name))
+    os.mkdir(f'D:\script\ML_v1\SIMUL_{version_idx_str}')
 
     #2 Make Variable info file
     #with open(os.path.join(folder_name,"info.yaml"), "w") as info_file:
-    with open(os.path.join('ML_v1',folder_name,"info.yaml"), "w") as info_file:
+    #with open(os.path.join('ML_v1',folder_name,"info.yaml"), "w") as info_file:
+    with open(f'D:\script\ML_v1\SIMUL_{version_idx_str}\info.yaml', "w") as info_file:
         yaml.dump(config,info_file)
 
     #3 Make python script file
@@ -51,7 +53,7 @@ def run_simul(version_idx_str):
     #Save file
     #filepath = 'D:\script\ML_v1\run_ansys_{version_idx_str}.py'
     filepath = os.path.join('ML_v1',folder_name,f'run_ansys_{version_idx_str}.py')
-    with open(filepath,"w") as f :
+    with open(f'D:\\script\\ML_v1\\SIMUL_{version_idx_str}\\run_ansys_{version_idx_str}.py',"w") as f :
         f.write(ref_script_str)
 
 
@@ -71,8 +73,8 @@ def run_simul(version_idx_str):
     
 
 
-for i in range(31, 40): 
+for i in range(36, 40): 
     
     run_simul(i)
     
-    time.sleep(5)
+    time.sleep(1)
