@@ -1499,7 +1499,7 @@ oModule.CreateReport(" Table 1", "Terminal Solution Data", "Data Table", "Setup1
 		"X Component:="		, "Freq",
 		"Y Component:="		, ["(im(Zt(Ter1,Ter2))/2/pi/freq / sqrt(im(Zt(Ter1,Ter1))/2/pi/freq*im(Zt(Ter2,Ter2))/2/pi/freq))^2 * im(Zt(Ter1,Ter1))/2/pi/freq * 1e+3"]
 	])
-oModule.AddTraces(" Table 1", "Terminal Solution Data", "Data Table", "Setup1 : LastAdaptive", [], 
+oModule.AddTraces(" Table 1", "Setup1 : LastAdaptive", [], 
 	[
 		"Freq:="		, ["All"],
 		"air:="			, ["Nominal"],
