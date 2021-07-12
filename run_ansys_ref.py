@@ -1589,3 +1589,4 @@ oModule.ExportToFile(" Table 1", "D:/script/ML_v1_data/Data $VERSION_IDX_STR.csv
 #oProject.Save()
 
 oProject.DeleteDesign("HFSS_ML_v$VERSION_IDX_STR")
+oProject.Save()
