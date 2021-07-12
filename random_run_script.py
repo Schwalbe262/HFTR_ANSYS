@@ -91,11 +91,12 @@ def run_simul(version_idx_str):
     
 
 
-for i in range(161, 1001): 
+for i in range(195, 1001): 
 
     try :
         run_simul(i)
-    except :	
+    except :
+        time.sleep(1)	
 
     
     time.sleep(1)
