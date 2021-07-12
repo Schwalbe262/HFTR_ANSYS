@@ -6,12 +6,7 @@ import csv
 
 
 REFERENCE_SCRIPT_FILE_NAME = "run_ansys_ref.py"
-
-for i in range(1, 10): 
     
-	run_simul(i)
-    
-
 
 def run_simul(version_idx_str):
 	#0 Initialize random variables
@@ -57,4 +52,9 @@ def run_simul(version_idx_str):
 
 
 	#4 run script in system.
-		subprocess.run(["C:\Program Files\AnsysEM\AnsysEM20.1\Win64\ansysedt.exe", "-runscriptandexit",filepath])
+		subprocess.run(["C:\Program Files\AnsysEM\AnsysEM20.1\Win64\ansysedt.exe ", "-runscriptandexit ",filepath])
+
+
+for i in range(1, 10): 
+    
+	run_simul(i)
