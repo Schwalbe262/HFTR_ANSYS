@@ -6,16 +6,27 @@ import random
 
 REFERENCE_SCRIPT_FILE_NAME = "run_ansys_ref.py"
 
+for i in range(1): 
+    
+    run_simul(i)
+    
+
 
 def run_simul(version_idx_str):
     #0 Initialize random variables
-    itr = random.randrange(1, 10000) #FIXME : change random range.
+    l1 = random.randrange(10,50) #FIXME : change random range.
+	l2 = random.randrange(50,100)
+	h1 = random.randrange(50,150)
+	w1 =  random.randrange(30,200)
     #FIXME : add some variables
 
     #0.5 Config Identifier-Variable set.
     config = {
             "$VERSION_IDX_STR"  :   version_idx_str,
-            "$ITR"              :   itr
+            "$l1"              :   l1,
+            "$l2"              :   l2,
+            "$h1"              :   h1,
+            "$w1"              :   w1
             #FIXME : add some idt : variables
     }
 
@@ -48,5 +59,5 @@ def run_simul(version_idx_str):
     subprocess.run(["C:blablabla--FIXME--", "-runscript",filepath])
 
 
-run_simul("12354")
+
 
