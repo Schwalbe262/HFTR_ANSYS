@@ -86,7 +86,7 @@ oDesign.ChangeProperty(
 					"NAME:l1",
 					"PropType:="		, "VariableProp",
 					"UserDef:="		, True,
-					"Value:="		, "${l1}mm"
+					"Value:="		, "$l1mm"
 					
 				]
 			]
@@ -108,7 +108,7 @@ oDesign.ChangeProperty(
 					"NAME:l2",
 					"PropType:="		, "VariableProp",
 					"UserDef:="		, True,
-					"Value:="		, "${l2}mm"
+					"Value:="		, "$l2mm"
 					
 				]
 			]
@@ -152,7 +152,7 @@ oDesign.ChangeProperty(
 					"NAME:h1",
 					"PropType:="		, "VariableProp",
 					"UserDef:="		, True,
-					"Value:="		, "${h1}mm"
+					"Value:="		, "$h1mm"
 					
 				]
 			]
@@ -218,7 +218,7 @@ oDesign.ChangeProperty(
 					"NAME:w1",
 					"PropType:="		, "VariableProp",
 					"UserDef:="		, True,
-					"Value:="		, "${w1}mm"
+					"Value:="		, "$w1mm"
 					
 				]
 			]
@@ -1418,7 +1418,7 @@ oModule.AddTraces(" Table 1", "Setup1 : LastAdaptive", [],
 
 oProject.Save()
 oDesign.Analyze("Setup1")
-oModule.ExportToFile(" Table 1", "D:/script/ML_v1_data/Data ${VERSION_IDX_STR}.csv", False)
+oModule.ExportToFile(" Table 1", "D:/script/ML_v1_data/Data $VERSION_IDX_STR.csv", False)
 
 #oEditor.Delete(
 #	[
@@ -1432,4 +1432,4 @@ oModule.ExportToFile(" Table 1", "D:/script/ML_v1_data/Data ${VERSION_IDX_STR}.c
 
 #oProject.Save()
 
-oProject.DeleteDesign("HFSS_ML_v${VERSION_IDX_STR}")
+oProject.DeleteDesign("HFSS_ML_v$VERSION_IDX_STR")
