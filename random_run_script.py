@@ -14,17 +14,17 @@ def run_simul(version_idx_str):
     l2 = random.randrange(50,100)
     h1 = random.randrange(50,150)
     w1 =  random.randrange(30,200)
-        #FIXME : add some variables
+    #FIXME : add some variables
 
-        #0.5 Config Identifier-Variable set.
-        config = {
-            "$VERSION_IDX_STR"  :   version_idx_str,
-            "$l1"              :   l1,
-            "$l2"              :   l2,
-            "$h1"              :   h1,
-            "$w1"              :   w1
-            #FIXME : add some idt : variables
-        }
+    #0.5 Config Identifier-Variable set.
+    config = {
+        "$VERSION_IDX_STR"  :   version_idx_str,
+        "$l1"              :   l1,
+        "$l2"              :   l2,
+        "$h1"              :   h1,
+        "$w1"              :   w1
+        #FIXME : add some idt : variables
+    }
 
     #1 Make Folder
     folder_name = f'SIMUL_{version_idx_str}'
@@ -46,6 +46,7 @@ def run_simul(version_idx_str):
         ref_script_str = ref_script_str.replace(idt, str(var))
 
     #Save file
+    #filepath = 'D:\script\ML_v1\run_ansys_{version_idx_str}.py'
     filepath = os.path.join(folder_name,f'run_ansys_{version_idx_str}.py')
     with open(filepath,"w") as f :
         f.write(ref_script_str)
@@ -58,6 +59,6 @@ def run_simul(version_idx_str):
     subprocess.run(["C:\Program Files\AnsysEM\AnsysEM20.1\Win64\ansysedt.exe ", "-runscriptandexit ",filepath])
 
 
-for i in range(1, 10): 
+for i in range(20, 30): 
     
     run_simul(i)
