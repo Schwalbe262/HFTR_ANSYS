@@ -91,7 +91,7 @@ def run_simul(version_idx_str):
     
 
 
-for i in range(80, 85): 
+for i in range(1, 1001): 
     
     run_simul(i)
     
