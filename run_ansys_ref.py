@@ -1418,7 +1418,7 @@ oModule.AddTraces(" Table 1", "Setup1 : LastAdaptive", [],
 
 oProject.Save()
 oDesign.Analyze("Setup1")
-oModule.ExportToFile(" Table 1", "D:/script/Table 1.csv", False)
+oModule.ExportToFile(" Table 1", "D:/script/ML_v1_data/Data ${VERSION_IDX_STR}.csv", False)
 
 #oEditor.Delete(
 #	[
@@ -1432,4 +1432,4 @@ oModule.ExportToFile(" Table 1", "D:/script/Table 1.csv", False)
 
 #oProject.Save()
 
-oProject.DeleteDesign("HFSS_ML_v$VERSION_IDX_STR")
+oProject.DeleteDesign("HFSS_ML_v${VERSION_IDX_STR}")
