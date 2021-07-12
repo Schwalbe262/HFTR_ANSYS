@@ -4,9 +4,11 @@ import subprocess
 import random
 import csv
 import time
+import pandas as pd 
 
 
-REFERENCE_SCRIPT_FILE_NAME = f'D:\script\\run_ansys_ref.py"
+
+REFERENCE_SCRIPT_FILE_NAME = f'D:\\script\\run_ansys_ref.py'
     
 
 def run_simul(version_idx_str):
@@ -63,7 +65,7 @@ def run_simul(version_idx_str):
     #4 make batch file.
     
     filepath2 = os.path.join('ML_v1',folder_name,f'run_bat_{version_idx_str}.bat')
-    with open(filepath2,"w") as f :
+    with open(f'D:\\script\\ML_v1\\SIMUL_{version_idx_str}\\run_bat_{version_idx_str}.bat',"w") as f :
         f.write(f'"C:\\Program Files\\AnsysEM\\AnsysEM20.1\\Win64\\ansysedt.exe" -runscriptandexit "D:\\script\\ML_v1\\SIMUL_{version_idx_str}\\run_ansys_{version_idx_str}.py"')
         
     workingDir = f'D:\script\ML_v1\SIMUL_{version_idx_str}'
@@ -71,9 +73,19 @@ def run_simul(version_idx_str):
     os.chdir(workingDir)
     os.system(executeFile)
     
+    xlsx = pd.read_excel(f'D:\script\ML_v1_data\Data {version_idx_str}.csv')
+    
+    print(xlsx.head()) 
+    print() 
+    print(xlsx.tail()) 
+    print() 
+    print(xlsx.shape) #행, 열
+    
+    
+    
 
 
-for i in range(36, 40): 
+for i in range(40, 42): 
     
     run_simul(i)
     
