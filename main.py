@@ -126,6 +126,28 @@ oDesign.ChangeProperty(
 			[
 				"NAME:NewProps",
 				[
+					"NAME:l3",
+					"PropType:="		, "VariableProp",
+					"UserDef:="		, True,
+					"Value:="		, "10mm"
+					
+				]
+			]
+		]
+	])
+
+oDesign.ChangeProperty(
+	[
+		"NAME:AllTabs",
+		[
+			"NAME:LocalVariableTab",
+			[
+				"NAME:PropServers", 
+				"LocalVariables"
+			],
+			[
+				"NAME:NewProps",
+				[
 					"NAME:h1",
 					"PropType:="		, "VariableProp",
 					"UserDef:="		, True,
@@ -148,6 +170,51 @@ oDesign.ChangeProperty(
 			[
 				"NAME:NewProps",
 				[
+					"NAME:d1",
+					"PropType:="		, "VariableProp",
+					"UserDef:="		, True,
+					"Value:="		, "6.54mm"
+					
+				]
+			]
+		]
+	])
+
+oDesign.ChangeProperty(
+	[
+		"NAME:AllTabs",
+		[
+			"NAME:LocalVariableTab",
+			[
+				"NAME:PropServers", 
+				"LocalVariables"
+			],
+			[
+				"NAME:NewProps",
+				[
+					"NAME:move_tx",
+					"PropType:="		, "VariableProp",
+					"UserDef:="		, True,
+					"Value:="		, "6.54mm + 3mm"
+					
+				]
+			]
+		]
+	])
+
+oDesign.ChangeProperty(
+	[
+		"NAME:AllTabs",
+		[
+			"NAME:LocalVariableTab",
+			[
+				"NAME:PropServers", 
+				"LocalVariables"
+			],
+			[
+				"NAME:NewProps",
+				[
+					"NAME:w1",
 					"PropType:="		, "VariableProp",
 					"UserDef:="		, True,
 					"Value:="		, "30mm"
@@ -278,4 +345,185 @@ oEditor.Subtract(
 	[
 		"NAME:SubtractParameters",
 		"KeepOriginals:="	, False
+	])
+
+# Tx1
+oEditor.CreatePolyline(
+	[
+		"NAME:PolylineParameters",
+		"IsPolylineCovered:="	, True,
+		"IsPolylineClosed:="	, False,
+		[
+			"NAME:PolylinePoints",
+			[
+				"NAME:PLPoint",
+				"X:="			, "w1/2+space1",
+				"Y:="			, "-l1-space1",
+				"Z:="			, "0mm"
+			],
+			[
+				"NAME:PLPoint",
+				"X:="			, "w1/2",
+				"Y:="			, "-l1-space1",
+				"Z:="			, "0mm"
+			],
+			[
+				"NAME:PLPoint",
+				"X:="			, "-w1/2-space1",
+				"Y:="			, "-l1-space1",
+				"Z:="			, "-1/4*move_tx"
+			],
+			[
+				"NAME:PLPoint",
+				"X:="			, "-w1/2-space1",
+				"Y:="			, "l1+space1",
+				"Z:="			, "-2/4*move_tx"
+			],
+			[
+				"NAME:PLPoint",
+				"X:="			, "w1/2+space1",
+				"Y:="			, "l1+space1",
+				"Z:="			, "-3/4*move_tx"
+			],
+			[
+				"NAME:PLPoint",
+				"X:="			, "w1/2+space1",
+				"Y:="			, "-l1-space1",
+				"Z:="			, "-4/4*move_tx"
+			],
+			[
+				"NAME:PLPoint",
+				"X:="			, "w1/2",
+				"Y:="			, "-l1-space1",
+				"Z:="			, "-4/4*move_tx"
+			]
+		],
+		[
+			"NAME:PolylineSegments",
+			[
+				"NAME:PLSegment",
+				"SegmentType:="		, "Circle",
+				"StartIndex:="		, 0,
+				"NoOfPoints:="		, 2
+			],
+			[
+				"NAME:PLSegment",
+				"SegmentType:="		, "Circle",
+				"StartIndex:="		, 1,
+				"NoOfPoints:="		, 2
+			],
+			[
+				"NAME:PLSegment",
+				"SegmentType:="		, "Circle",
+				"StartIndex:="		, 2,
+				"NoOfPoints:="		, 2
+			],
+			[
+				"NAME:PLSegment",
+				"SegmentType:="		, "Circle",
+				"StartIndex:="		, 3,
+				"NoOfPoints:="		, 2
+			],
+			[
+				"NAME:PLSegment",
+				"SegmentType:="		, "Circle",
+				"StartIndex:="		, 4,
+				"NoOfPoints:="		, 2
+			],
+			[
+				"NAME:PLSegment",
+				"SegmentType:="		, "Circle",
+				"StartIndex:="		, 5,
+				"NoOfPoints:="		, 2
+			]
+		],
+		[
+			"NAME:PolylineXSection",
+			"XSectionType:="	, "None",
+			"XSectionOrient:="	, "Auto",
+			"XSectionWidth:="	, "d1",
+			"XSectionTopWidth:="	, "0mm",
+			"XSectionHeight:="	, "0mm",
+			"XSectionNumSegments:="	, "0",
+			"XSectionBendType:="	, "Corner"
+		]
+	], 
+	[
+		"NAME:Attributes",
+		"Name:="		, "Tx1",
+		"Flags:="		, "",
+		"Color:="		, "(143 175 143)",
+		"Transparency:="	, 0,
+		"PartCoordinateSystem:=", "Global",
+		"UDMId:="		, "",
+		"MaterialValue:="	, "\"copper\"",
+		"SurfaceMaterialValue:=", "\"\"",
+		"SolveInside:="		, True,
+		"IsMaterialEditable:="	, True,
+		"UseMaterialAppearance:=", False,
+		"IsLightweight:="	, False
+	])
+
+oEditor.Copy(
+	[
+		"NAME:Selections",
+		"Selections:="		, "Tx1"
+	])
+
+oEditor.Paste()
+
+oEditor.Paste()
+
+oEditor.Paste()
+
+oEditor.Move(
+	[
+		"NAME:Selections",
+		"Selections:="		, "Tx1",
+		"NewPartsModelFlag:="	, "Model"
+	], 
+	[
+		"NAME:TranslateParameters",
+		"TranslateVectorX:="	, "0",
+		"TranslateVectorY:="	, "0",
+		"TranslateVectorZ:="	, "0mm"
+	])
+
+oEditor.Move(
+	[
+		"NAME:Selections",
+		"Selections:="		, "Tx2",
+		"NewPartsModelFlag:="	, "Model"
+	], 
+	[
+		"NAME:TranslateParameters",
+		"TranslateVectorX:="	, "0",
+		"TranslateVectorY:="	, "0",
+		"TranslateVectorZ:="	, "-1*move_tx"
+	])
+
+oEditor.Move(
+	[
+		"NAME:Selections",
+		"Selections:="		, "Tx3",
+		"NewPartsModelFlag:="	, "Model"
+	], 
+	[
+		"NAME:TranslateParameters",
+		"TranslateVectorX:="	, "0",
+		"TranslateVectorY:="	, "0",
+		"TranslateVectorZ:="	, "-2*move_tx"
+	])
+
+oEditor.Move(
+	[
+		"NAME:Selections",
+		"Selections:="		, "Tx4",
+		"NewPartsModelFlag:="	, "Model"
+	], 
+	[
+		"NAME:TranslateParameters",
+		"TranslateVectorX:="	, "0",
+		"TranslateVectorY:="	, "0",
+		"TranslateVectorZ:="	, "-3*move_tx"
 	])
