@@ -64,23 +64,93 @@ oDesign.ChangeProperty(
 					"NAME:air",
 					"PropType:="		, "VariableProp",
 					"UserDef:="		, True,
-					"Value:="		, "300mm",
+					"Value:="		, "300mm"
+				]
+			]
+		]
+	])
+
+oDesign.ChangeProperty(
+	[
+		"NAME:AllTabs",
+		[
+			"NAME:LocalVariableTab",
+			[
+				"NAME:PropServers", 
+				"LocalVariables"
+			],
+			[
+				"NAME:NewProps",
+				[
 					"NAME:l1",
 					"PropType:="		, "VariableProp",
 					"UserDef:="		, True,
-					"Value:="		, "10mm",
+					"Value:="		, "10mm"
+					
+				]
+			]
+		]
+	])
+
+oDesign.ChangeProperty(
+	[
+		"NAME:AllTabs",
+		[
+			"NAME:LocalVariableTab",
+			[
+				"NAME:PropServers", 
+				"LocalVariables"
+			],
+			[
+				"NAME:NewProps",
+				[
 					"NAME:l2",
 					"PropType:="		, "VariableProp",
 					"UserDef:="		, True,
-					"Value:="		, "50mm",
+					"Value:="		, "50mm"
+					
+				]
+			]
+		]
+	])
+
+oDesign.ChangeProperty(
+	[
+		"NAME:AllTabs",
+		[
+			"NAME:LocalVariableTab",
+			[
+				"NAME:PropServers", 
+				"LocalVariables"
+			],
+			[
+				"NAME:NewProps",
+				[
 					"NAME:h1",
 					"PropType:="		, "VariableProp",
 					"UserDef:="		, True,
-					"Value:="		, "50mm",
-					"NAME:w1",
+					"Value:="		, "50mm"
+					
+				]
+			]
+		]
+	])
+
+oDesign.ChangeProperty(
+	[
+		"NAME:AllTabs",
+		[
+			"NAME:LocalVariableTab",
+			[
+				"NAME:PropServers", 
+				"LocalVariables"
+			],
+			[
+				"NAME:NewProps",
+				[
 					"PropType:="		, "VariableProp",
 					"UserDef:="		, True,
-					"Value:="		, "30mm",
+					"Value:="		, "30mm"
 					
 				]
 			]
