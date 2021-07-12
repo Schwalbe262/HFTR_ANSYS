@@ -13,7 +13,7 @@ oDesktop.OpenProject("D:/transformer_2021/ML_v1.aedt")
 oProject = oDesktop.SetActiveProject("ML_v1")
 oProject.InsertDesign("HFSS", "HFSSDesign1", "DrivenModal", "")
 oDesign = oProject.SetActiveDesign("HFSSDesign1")
-oDesign.RenameDesignInstance("HFSSDesign1", "HFSS_name") # project name 변경
+oDesign.RenameDesignInstance("HFSSDesign1", "HFSS_name") # project name
 
 # Make setup
 oModule = oDesign.GetModule("AnalysisSetup")
@@ -101,7 +101,7 @@ oEditor.CreateBox(
 	], 
 	[
 		"NAME:Attributes",
-		"Name:="		, "Box1",
+		"Name:="		, "Air",
 		"Flags:="		, "",
 		"Color:="		, "(143 175 143)",
 		"Transparency:="	, 0,
