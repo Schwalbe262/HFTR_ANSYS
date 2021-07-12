@@ -4,11 +4,13 @@ import subprocess
 import random
 import csv
 import time
-import pandas as pd 
+import csv
+import numpy as np
 
 
 
 REFERENCE_SCRIPT_FILE_NAME = f'D:\\script\\run_ansys_ref.py'
+#REFERENCE_SCRIPT_FILE_NAME = "run_ansys_ref.py"
     
 
 def run_simul(version_idx_str):
@@ -73,19 +75,23 @@ def run_simul(version_idx_str):
     os.chdir(workingDir)
     os.system(executeFile)
     
-    xlsx = pd.read_excel(f'D:\script\ML_v1_data\Data {version_idx_str}.csv')
-    
-    print(xlsx.head()) 
-    print() 
-    print(xlsx.tail()) 
-    print() 
-    print(xlsx.shape) #행, 열
-    
-    
+    with open(f'D:\script\ML_v1_data\Data {version_idx_str}.csv',"r") as f :
+        rdr = csv.reader(f)
+
+        for line in rdr:
+            a = 1
+            
+    with open(f'D:\script\ML_v1_data\Data.csv',"a", encoding='utf-8', newline='') as f :
+        
+        tmp = np.concatenate((l1, l2, h1, w1, line[1], line[2], line[3], line[4], line[5]), axis=None)
+        wr = csv.writer(f)
+        wr.writerow(tmp)
+            
+
     
 
 
-for i in range(40, 42): 
+for i in range(80, 85): 
     
     run_simul(i)
     
