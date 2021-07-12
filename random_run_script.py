@@ -3,6 +3,7 @@ import os
 import subprocess
 import random
 import csv
+import time
 
 
 REFERENCE_SCRIPT_FILE_NAME = "run_ansys_ref.py"
@@ -28,10 +29,12 @@ def run_simul(version_idx_str):
 
     #1 Make Folder
     folder_name = f'SIMUL_{version_idx_str}'
-    os.mkdir(folder_name)
+    #os.mkdir(folder_name)
+    os.mkdir(os.path.join('ML_v1',folder_name))
 
     #2 Make Variable info file
-    with open(os.path.join(folder_name,"info.yaml"), "w") as info_file:
+    #with open(os.path.join(folder_name,"info.yaml"), "w") as info_file:
+    with open(os.path.join('ML_v1',folder_name,"info.yaml"), "w") as info_file:
         yaml.dump(config,info_file)
 
     #3 Make python script file
@@ -47,18 +50,29 @@ def run_simul(version_idx_str):
 
     #Save file
     #filepath = 'D:\script\ML_v1\run_ansys_{version_idx_str}.py'
-    filepath = os.path.join(folder_name,f'run_ansys_{version_idx_str}.py')
+    filepath = os.path.join('ML_v1',folder_name,f'run_ansys_{version_idx_str}.py')
     with open(filepath,"w") as f :
         f.write(ref_script_str)
 
-    print(folder_name)
-    print(filepath)
-
 
     #4 run script in system.
-    subprocess.run(["C:\Program Files\AnsysEM\AnsysEM20.1\Win64\ansysedt.exe ", "-runscriptandexit ",filepath])
+    #subprocess.run(["C:\Program Files\AnsysEM\AnsysEM20.1\Win64\ansysedt.exe ", "-runscriptandexit D:\script\\", filepath])
+    
+    #4 make batch file.
+    
+    filepath2 = os.path.join('ML_v1',folder_name,f'run_bat_{version_idx_str}.bat')
+    with open(filepath2,"w") as f :
+        f.write(f'"C:\\Program Files\\AnsysEM\\AnsysEM20.1\\Win64\\ansysedt.exe" -runscriptandexit "D:\\script\\ML_v1\\SIMUL_{version_idx_str}\\run_ansys_{version_idx_str}.py"')
+        
+    workingDir = f'D:\script\ML_v1\SIMUL_{version_idx_str}'
+    executeFile = f'D:\script\ML_v1\SIMUL_{version_idx_str}\\run_bat_{version_idx_str}.bat'
+    os.chdir(workingDir)
+    os.system(executeFile)
+    
 
 
-for i in range(20, 30): 
+for i in range(30, 40): 
     
     run_simul(i)
+    
+    time.sleep(1)
