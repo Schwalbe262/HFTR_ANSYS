@@ -2,6 +2,7 @@ import yaml
 import os
 import subprocess
 import random
+import csv
 
 
 REFERENCE_SCRIPT_FILE_NAME = "run_ansys_ref.py"
