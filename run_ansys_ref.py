@@ -24,8 +24,8 @@ oModule.InsertSetup("HfssDriven",
 		"AdaptMultipleFreqs:="	, False,
 		"Frequency:="		, "40kHz",
 		"MaxDeltaE:="		, 0.1,
-		"MaximumPasses:="	, 2,
-		"MinimumPasses:="	, 1,
+		"MaximumPasses:="	, 3,
+		"MinimumPasses:="	, 3,
 		"MinimumConvergedPasses:=", 1,
 		"PercentRefinement:="	, 30,
 		"IsEnabled:="		, True,
@@ -461,31 +461,37 @@ oEditor.CreatePolyline(
 				"NAME:PLPoint",
 				"X:="			, "-w1/2-space1",
 				"Y:="			, "-l1-space1",
-				"Z:="			, "-1/4*move_tx"
+				"Z:="			, "-0*move_tx"
 			],
 			[
 				"NAME:PLPoint",
 				"X:="			, "-w1/2-space1",
 				"Y:="			, "l1+space1",
-				"Z:="			, "-2/4*move_tx"
+				"Z:="			, "-1/3*move_tx"
 			],
 			[
 				"NAME:PLPoint",
 				"X:="			, "w1/2+space1",
 				"Y:="			, "l1+space1",
-				"Z:="			, "-3/4*move_tx"
+				"Z:="			, "-2/3*move_tx"
+			],
+			[
+				"NAME:PLPoint",
+				"X:="			, "w1/2+space1",
+				"Y:="			, "-l1",
+				"Z:="			, "-3/3*move_tx"
 			],
 			[
 				"NAME:PLPoint",
 				"X:="			, "w1/2+space1",
 				"Y:="			, "-l1-space1",
-				"Z:="			, "-4/4*move_tx"
+				"Z:="			, "-3/3*move_tx"
 			],
 			[
 				"NAME:PLPoint",
 				"X:="			, "w1/2",
 				"Y:="			, "-l1-space1",
-				"Z:="			, "-4/4*move_tx"
+				"Z:="			, "-3/3*move_tx"
 			]
 		],
 		[
@@ -524,6 +530,12 @@ oEditor.CreatePolyline(
 				"NAME:PLSegment",
 				"SegmentType:="		, "Line",
 				"StartIndex:="		, 5,
+				"NoOfPoints:="		, 2
+			],
+			[
+				"NAME:PLSegment",
+				"SegmentType:="		, "Line",
+				"StartIndex:="		, 6,
 				"NoOfPoints:="		, 2
 			]
 		],
@@ -674,13 +686,13 @@ oEditor.ChangeProperty(
 			"NAME:Geometry3DPolylineTab",
 			[
 				"NAME:PropServers", 
-				"Tx4:CreatePolyline:2:Segment5"
+				"Tx4:CreatePolyline:2:Segment6"
 			],
 			[
 				"NAME:ChangedProps",
 				[
 					"NAME:Point2",
-					"X:="			, "w1/2+space1+3mm",
+					"X:="			, "w1/2+space1+5mm",
 					"Y:="			, "-l1-space1",
 					"Z:="			, "-4/4*move_tx"
 				]
@@ -887,31 +899,37 @@ oEditor.CreatePolyline(
 				"NAME:PLPoint",
 				"X:="			, "-w1/2-space2",
 				"Y:="			, "-l1-space2",
-				"Z:="			, "-1/4*move_tx"
+				"Z:="			, "-0*move_tx"
 			],
 			[
 				"NAME:PLPoint",
 				"X:="			, "-w1/2-space2",
 				"Y:="			, "l1+space2",
-				"Z:="			, "-2/4*move_tx"
+				"Z:="			, "-1/3*move_tx"
 			],
 			[
 				"NAME:PLPoint",
 				"X:="			, "w1/2+space2",
 				"Y:="			, "l1+space2",
-				"Z:="			, "-3/4*move_tx"
+				"Z:="			, "-2/3*move_tx"
+			],
+			[
+				"NAME:PLPoint",
+				"X:="			, "w1/2+space2",
+				"Y:="			, "-l1",
+				"Z:="			, "-3/3*move_tx"
 			],
 			[
 				"NAME:PLPoint",
 				"X:="			, "w1/2+space2",
 				"Y:="			, "-l1-space2",
-				"Z:="			, "-4/4*move_tx"
+				"Z:="			, "-3/3*move_tx"
 			],
 			[
 				"NAME:PLPoint",
 				"X:="			, "w1/2",
 				"Y:="			, "-l1-space2",
-				"Z:="			, "-4/4*move_tx"
+				"Z:="			, "-3/3*move_tx"
 			]
 		],
 		[
@@ -950,6 +968,12 @@ oEditor.CreatePolyline(
 				"NAME:PLSegment",
 				"SegmentType:="		, "Line",
 				"StartIndex:="		, 5,
+				"NoOfPoints:="		, 2
+			],
+			[
+				"NAME:PLSegment",
+				"SegmentType:="		, "Line",
+				"StartIndex:="		, 6,
 				"NoOfPoints:="		, 2
 			]
 		],
@@ -1084,7 +1108,7 @@ oEditor.ChangeProperty(
 				"NAME:ChangedProps",
 				[
 					"NAME:Point1",
-					"X:="			, "w1/2+space2+3mm",
+					"X:="			, "w1/2+space2+5mm",
 					"Y:="			, "-l1-space2",
 					"Z:="			, "0mm"
 				]
@@ -1100,7 +1124,7 @@ oEditor.ChangeProperty(
 			"NAME:Geometry3DPolylineTab",
 			[
 				"NAME:PropServers", 
-				"Rx4:CreatePolyline:2:Segment5"
+				"Rx4:CreatePolyline:2:Segment6"
 			],
 			[
 				"NAME:ChangedProps",
@@ -1295,62 +1319,147 @@ oEditor.Unite(
 # ===========================================================================================
 
 # 
-oEditor.CreateObjectFromEdges(
+oEditor.CreateRectangle(
 	[
-		"NAME:Selections",
-		"Selections:="		, "Tx_in",
-		"NewPartsModelFlag:="	, "Model"
+		"NAME:RectangleParameters",
+		"IsCovered:="		, True,
+		"XStart:="		, "w1/2+space1+5mm",
+		"YStart:="		, "-l1-space1-d1/2",
+		"ZStart:="		, "offset_tx-d1/2",
+		"Width:="		, "d1",
+		"Height:="		, "-4*move_tx+d1",
+		"WhichAxis:="		, "X"
 	], 
 	[
-		"NAME:Parameters",
-		[
-			"NAME:BodyFromEdgeToParameters",
-			"Edges:="		, [1027,1003]
-		]
+		"NAME:Attributes",
+		"Name:="		, "Ter1_Rec1",
+		"Flags:="		, "",
+		"Color:="		, "(143 175 143)",
+		"Transparency:="	, 0,
+		"PartCoordinateSystem:=", "Global",
+		"UDMId:="		, "",
+		"MaterialValue:="	, "\"copper\"",
+		"SurfaceMaterialValue:=", "\"\"",
+		"SolveInside:="		, True,
+		"IsMaterialEditable:="	, True,
+		"UseMaterialAppearance:=", False,
+		"IsLightweight:="	, False
+	])
+
+oEditor.CreateRectangle(
+	[
+		"NAME:RectangleParameters",
+		"IsCovered:="		, True,
+		"XStart:="		, "w1/2+space2+5mm",
+		"YStart:="		, "-l1-space2-d1/2",
+		"ZStart:="		, "offset_tx-d1/2",
+		"Width:="		, "d1",
+		"Height:="		, "-4*move_tx+d1",
+		"WhichAxis:="		, "X"
 	], 
 	[
-		"CreateGroupsForNewObjects:=", False
+		"NAME:Attributes",
+		"Name:="		, "Ter2_Rec1",
+		"Flags:="		, "",
+		"Color:="		, "(143 175 143)",
+		"Transparency:="	, 0,
+		"PartCoordinateSystem:=", "Global",
+		"UDMId:="		, "",
+		"MaterialValue:="	, "\"copper\"",
+		"SurfaceMaterialValue:=", "\"\"",
+		"SolveInside:="		, True,
+		"IsMaterialEditable:="	, True,
+		"UseMaterialAppearance:=", False,
+		"IsLightweight:="	, False
 	])
-oEditor.Connect(
+
+oEditor.CreateRectangle(
 	[
-		"NAME:Selections",
-		"Selections:="		, "Tx_in_ObjectFromEdge1,Tx_in_ObjectFromEdge2"
-	])
-oEditor.CreateObjectFromEdges(
-	[
-		"NAME:Selections",
-		"Selections:="		, "Rx_in",
-		"NewPartsModelFlag:="	, "Model"
+		"NAME:RectangleParameters",
+		"IsCovered:="		, True,
+		"XStart:="		, "w1/2+space1+5mm",
+		"YStart:="		, "-l1-space1-d1/2",
+		"ZStart:="		, "offset_tx-d1/2",
+		"Width:="		, "d1",
+		"Height:="		, "-1mm",
+		"WhichAxis:="		, "X"
 	], 
 	[
-		"NAME:Parameters",
-		[
-			"NAME:BodyFromEdgeToParameters",
-			"Edges:="		, [2294,2270]
-		]
+		"NAME:Attributes",
+		"Name:="		, "Ter1_Rec2",
+		"Flags:="		, "",
+		"Color:="		, "(143 175 143)",
+		"Transparency:="	, 0,
+		"PartCoordinateSystem:=", "Global",
+		"UDMId:="		, "",
+		"MaterialValue:="	, "\"copper\"",
+		"SurfaceMaterialValue:=", "\"\"",
+		"SolveInside:="		, True,
+		"IsMaterialEditable:="	, True,
+		"UseMaterialAppearance:=", False,
+		"IsLightweight:="	, False
+	])
+
+oEditor.CreateRectangle(
+	[
+		"NAME:RectangleParameters",
+		"IsCovered:="		, True,
+		"XStart:="		, "w1/2+space2+5mm",
+		"YStart:="		, "-l1-space2-d1/2",
+		"ZStart:="		, "offset_tx-d1/2",
+		"Width:="		, "d1",
+		"Height:="		, "-1mm",
+		"WhichAxis:="		, "X"
 	], 
 	[
-		"CreateGroupsForNewObjects:=", False
+		"NAME:Attributes",
+		"Name:="		, "Ter2_Rec2",
+		"Flags:="		, "",
+		"Color:="		, "(143 175 143)",
+		"Transparency:="	, 0,
+		"PartCoordinateSystem:=", "Global",
+		"UDMId:="		, "",
+		"MaterialValue:="	, "\"copper\"",
+		"SurfaceMaterialValue:=", "\"\"",
+		"SolveInside:="		, True,
+		"IsMaterialEditable:="	, True,
+		"UseMaterialAppearance:=", False,
+		"IsLightweight:="	, False
 	])
-oEditor.Connect(
-	[
-		"NAME:Selections",
-		"Selections:="		, "Rx_in_ObjectFromEdge1,Rx_in_ObjectFromEdge2"
-	])
+
+# ===========================================================================================
+# Make Terminal
+# ===========================================================================================
+
+
 oModule = oDesign.GetModule("BoundarySetup")
+
+oEditor = oDesign.SetActiveEditor("3D Modeler")
+oFaceIDs1 = oEditor.GetFaceIDs("Ter1_Rec1")
+oFaceIDs2 = oEditor.GetFaceIDs("Ter1_Rec2")
+oFaceIDs3 = oEditor.GetFaceIDs("Ter2_Rec1")
+oFaceIDs4 = oEditor.GetFaceIDs("Ter2_Rec2")
+
 oModule.AutoIdentifyPorts(
 	[
 		"NAME:Faces", 
-		2712
+		oFaceIDs1[0]
 	], False, 
 	[
 		"NAME:ReferenceConductors", 
 		"Tx_in"
 	], "1", True)
+oModule.AssignTerminal(
+	[
+		"NAME:Ter1",
+		"Objects:="		, ["Ter1_Rec2"],
+		"ParentBndID:="		, "1",
+		"TerminalResistance:="	, "50ohm"
+	])
 oModule.AutoIdentifyPorts(
 	[
 		"NAME:Faces", 
-		2733
+		oFaceIDs3[0]
 	], False, 
 	[
 		"NAME:ReferenceConductors", 
@@ -1358,15 +1467,8 @@ oModule.AutoIdentifyPorts(
 	], "2", True)
 oModule.AssignTerminal(
 	[
-		"NAME:Ter1",
-		"Edges:="		, [2715],
-		"ParentBndID:="		, "1",
-		"TerminalResistance:="	, "50ohm"
-	])
-oModule.AssignTerminal(
-	[
 		"NAME:Ter2",
-		"Edges:="		, [2736],
+		"Objects:="		, ["Ter2_Rec2"],
 		"ParentBndID:="		, "2",
 		"TerminalResistance:="	, "50ohm"
 	])
@@ -1395,7 +1497,25 @@ oModule.CreateReport(" Table 1", "Terminal Solution Data", "Data Table", "Setup1
 	], 
 	[
 		"X Component:="		, "Freq",
-		"Y Component:="		, ["im(Zt(Ter1,Ter1))/2/pi/freq"]
+		"Y Component:="		, ["(im(Zt(Ter1,Ter2))/2/pi/freq / sqrt(im(Zt(Ter1,Ter1))/2/pi/freq*im(Zt(Ter2,Ter2))/2/pi/freq))^2 * im(Zt(Ter1,Ter1))/2/pi/freq * 1e+3"]
+	])
+oModule.CreateReport(" Table 1", "Terminal Solution Data", "Data Table", "Setup1 : LastAdaptive", [], 
+	[
+		"Freq:="		, ["All"],
+		"air:="			, ["Nominal"],
+		"l1:="			, ["Nominal"],
+		"l2:="			, ["Nominal"],
+		"l3:="			, ["Nominal"],
+		"h1:="			, ["Nominal"],
+		"d1:="			, ["Nominal"],
+		"w1:="			, ["Nominal"],
+		"space1:="		, ["Nominal"],
+		"space2:="		, ["Nominal"],
+		"Num:="			, ["Nominal"]
+	], 
+	[
+		"X Component:="		, "Freq",
+		"Y Component:="		, ["(im(Zt(Ter1,Ter2))/2/pi/freq / sqrt(im(Zt(Ter1,Ter1))/2/pi/freq*im(Zt(Ter2,Ter2))/2/pi/freq))^2 * im(Zt(Ter2,Ter2))/2/pi/freq * 1e+3"]
 	])
 oModule.AddTraces(" Table 1", "Setup1 : LastAdaptive", [], 
 	[
@@ -1413,7 +1533,43 @@ oModule.AddTraces(" Table 1", "Setup1 : LastAdaptive", [],
 	], 
 	[
 		"X Component:="		, "Freq",
-		"Y Component:="		, ["im(Zt(Ter2,Ter2))/2/pi/freq"]
+		"Y Component:="		, ["(1 - (im(Zt(Ter1,Ter2))/2/pi/freq / sqrt(im(Zt(Ter1,Ter1))/2/pi/freq*im(Zt(Ter2,Ter2))/2/pi/freq))^2) * im(Zt(Ter1,Ter1))/2/pi/freq * 1e+6"]
+	])
+oModule.AddTraces(" Table 1", "Setup1 : LastAdaptive", [], 
+	[
+		"Freq:="		, ["All"],
+		"air:="			, ["Nominal"],
+		"l1:="			, ["Nominal"],
+		"l2:="			, ["Nominal"],
+		"l3:="			, ["Nominal"],
+		"h1:="			, ["Nominal"],
+		"d1:="			, ["Nominal"],
+		"w1:="			, ["Nominal"],
+		"space1:="		, ["Nominal"],
+		"space2:="		, ["Nominal"],
+		"Num:="			, ["Nominal"]
+	], 
+	[
+		"X Component:="		, "Freq",
+		"Y Component:="		, ["re(Zt(Ter1,Ter1))"]
+	])
+oModule.AddTraces(" Table 1", "Setup1 : LastAdaptive", [], 
+	[
+		"Freq:="		, ["All"],
+		"air:="			, ["Nominal"],
+		"l1:="			, ["Nominal"],
+		"l2:="			, ["Nominal"],
+		"l3:="			, ["Nominal"],
+		"h1:="			, ["Nominal"],
+		"d1:="			, ["Nominal"],
+		"w1:="			, ["Nominal"],
+		"space1:="		, ["Nominal"],
+		"space2:="		, ["Nominal"],
+		"Num:="			, ["Nominal"]
+	], 
+	[
+		"X Component:="		, "Freq",
+		"Y Component:="		, ["re(Zt(Ter2,Ter2))"]
 	])
 
 oProject.Save()
