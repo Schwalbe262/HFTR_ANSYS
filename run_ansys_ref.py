@@ -7,7 +7,7 @@ ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
 oDesktop.RestoreWindow()
 
 # Open aedt file
-oDesktop.OpenProject("D:/transformer_2021/ML_v1.aedt")
+oDesktop.OpenProject("D:/script/ML_aedt/ML_v1.aedt")
 
 # Make project
 oProject = oDesktop.SetActiveProject("ML_v1")
