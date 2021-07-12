@@ -71,8 +71,8 @@ def run_simul(version_idx_str):
     
 
 
-for i in range(30, 40): 
+for i in range(31, 40): 
     
     run_simul(i)
     
-    time.sleep(1)
+    time.sleep(5)
