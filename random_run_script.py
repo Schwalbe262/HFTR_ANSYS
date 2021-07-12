@@ -6,7 +6,7 @@ import random
 
 REFERENCE_SCRIPT_FILE_NAME = "run_ansys_ref.py"
 
-for i in range(1): 
+for i in range(1, 10): 
     
     run_simul(i)
     
