@@ -95,6 +95,7 @@ for i in range(195, 1001):
 
     try :
         run_simul(i)
+        os.remove(f'D:\script\ML_aedt\ML_v1.aedt.lock')
     except :
         time.sleep(1)	
 
