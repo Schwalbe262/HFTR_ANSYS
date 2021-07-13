@@ -21,10 +21,13 @@ def run_simul(version_idx_str):
     N1 = random.randrange(1,10)
     N2 = random.randrange(1,10)
     N = max(N1,N2)
-    l1 = random.randrange(5,80)
-    l2 = random.randrange(50,100)
-    h1 = random.randrange(math.ceil((N-1)*move_tx+2*d1),150)
+    l1 = random.randrange(5,50)
+    space2 = random.randrange(20,60)
+    space1 = random.randrange(5,space2-d1)
+    l2 = random.randrange(space2+20,100)
+    h1 = random.randrange(math.ceil((N-1)*move_tx+2*d1),200)
     w1 =  random.randrange(30,200)
+    air = max(2*l1+h1,4*l1+l2,w1+40+2*d1) + 50
 
     str_tx = "Tx_in,Tx_out,Tx1,"
     Tx_loop = ""
@@ -85,7 +88,10 @@ def run_simul(version_idx_str):
         "$Tx_loop"              :   Tx_loop,
         "$str_tx"              :   str_tx,
         "$Rx_loop"              :   Rx_loop,
-        "$str_rx"              :   str_rx
+        "$str_rx"              :   str_rx,
+        "$air"              :   air,
+        "$space1"              :   space1,
+        "$space2"              :   space2
         #FIXME : add some idt : variables
     }
 
