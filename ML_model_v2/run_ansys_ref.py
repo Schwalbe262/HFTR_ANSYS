@@ -217,6 +217,28 @@ oDesign.ChangeProperty(
 			[
 				"NAME:NewProps",
 				[
+					"NAME:move_rx",
+					"PropType:="		, "VariableProp",
+					"UserDef:="		, True,
+					"Value:="		, "6.54mm + 3mm"
+					
+				]
+			]
+		]
+	])
+
+oDesign.ChangeProperty(
+	[
+		"NAME:AllTabs",
+		[
+			"NAME:LocalVariableTab",
+			[
+				"NAME:PropServers", 
+				"LocalVariables"
+			],
+			[
+				"NAME:NewProps",
+				[
 					"NAME:w1",
 					"PropType:="		, "VariableProp",
 					"UserDef:="		, True,
@@ -242,7 +264,7 @@ oDesign.ChangeProperty(
 					"NAME:space1",
 					"PropType:="		, "VariableProp",
 					"UserDef:="		, True,
-					"Value:="		, "10mm"
+					"Value:="		, "$space1mm"
 					
 				]
 			]
@@ -264,7 +286,7 @@ oDesign.ChangeProperty(
 					"NAME:space2",
 					"PropType:="		, "VariableProp",
 					"UserDef:="		, True,
-					"Value:="		, "30mm"
+					"Value:="		, "$space2mm"
 					
 				]
 			]
@@ -308,12 +330,36 @@ oDesign.ChangeProperty(
 					"NAME:offset_tx",
 					"PropType:="		, "VariableProp",
 					"UserDef:="		, True,
-					"Value:="		, "2*move_tx"
+					"Value:="		, "$N1/2*move_tx"
 					
 				]
 			]
 		]
 	])
+
+	
+oDesign.ChangeProperty(
+	[
+		"NAME:AllTabs",
+		[
+			"NAME:LocalVariableTab",
+			[
+				"NAME:PropServers", 
+				"LocalVariables"
+			],
+			[
+				"NAME:NewProps",
+				[
+					"NAME:offset_rx",
+					"PropType:="		, "VariableProp",
+					"UserDef:="		, True,
+					"Value:="		, "$N2/2*move_tx"
+					
+				]
+			]
+		]
+	])
+
 
 oDesign.ChangeProperty(
 	[
@@ -904,37 +950,37 @@ oEditor.CreatePolyline(
 				"NAME:PLPoint",
 				"X:="			, "-w1/2-space2",
 				"Y:="			, "-l1-space2",
-				"Z:="			, "-0*move_tx"
+				"Z:="			, "-0*move_rx"
 			],
 			[
 				"NAME:PLPoint",
 				"X:="			, "-w1/2-space2",
 				"Y:="			, "l1+space2",
-				"Z:="			, "-1/3*move_tx"
+				"Z:="			, "-1/3*move_rx"
 			],
 			[
 				"NAME:PLPoint",
 				"X:="			, "w1/2+space2",
 				"Y:="			, "l1+space2",
-				"Z:="			, "-2/3*move_tx"
+				"Z:="			, "-2/3*move_rx"
 			],
 			[
 				"NAME:PLPoint",
 				"X:="			, "w1/2+space2",
 				"Y:="			, "-l1",
-				"Z:="			, "-3/3*move_tx"
+				"Z:="			, "-3/3*move_rx"
 			],
 			[
 				"NAME:PLPoint",
 				"X:="			, "w1/2+space2",
 				"Y:="			, "-l1-space2",
-				"Z:="			, "-3/3*move_tx"
+				"Z:="			, "-3/3*move_rx"
 			],
 			[
 				"NAME:PLPoint",
 				"X:="			, "w1/2",
 				"Y:="			, "-l1-space2",
-				"Z:="			, "-3/3*move_tx"
+				"Z:="			, "-3/3*move_rx"
 			]
 		],
 		[
@@ -1055,7 +1101,7 @@ oEditor.Move(
 		"NAME:TranslateParameters",
 		"TranslateVectorX:="	, "0",
 		"TranslateVectorY:="	, "0",
-		"TranslateVectorZ:="	, "offset_tx"
+		"TranslateVectorZ:="	, "offset_rx"
 	])
 
 
@@ -1096,7 +1142,7 @@ oEditor.ChangeProperty(
 					"NAME:Point2",
 					"X:="			, "w1/2+space2+3mm",
 					"Y:="			, "-l1-space2",
-					"Z:="			, "-4/4*move_tx"
+					"Z:="			, "-4/4*move_rx"
 				]
 			]
 		]
@@ -1113,13 +1159,13 @@ oEditor.CreatePolyline(
 				"NAME:PLPoint",
 				"X:="			, "w1/2+space2+0mm",
 				"Y:="			, "-l1-space2",
-				"Z:="			, "offset_tx"
+				"Z:="			, "offset_rx"
 			],
 			[
 				"NAME:PLPoint",
 				"X:="			, "w1/2+space2+5mm",
 				"Y:="			, "-l1-space2",
-				"Z:="			, "offset_tx"
+				"Z:="			, "offset_rx"
 			]
 		],
 		[
@@ -1195,13 +1241,13 @@ oEditor.CreatePolyline(
 				"NAME:PLPoint",
 				"X:="			, "w1/2+space2+0mm",
 				"Y:="			, "-l1-space2",
-				"Z:="			, "offset_tx-$N2*move_tx"
+				"Z:="			, "offset_rx-$N2*move_rx"
 			],
 			[
 				"NAME:PLPoint",
 				"X:="			, "w1/2+space2+5mm",
 				"Y:="			, "-l1-space2",
-				"Z:="			, "offset_tx-$N2*move_tx"
+				"Z:="			, "offset_rx-$N2*move_rx"
 			]
 		],
 		[
@@ -1269,7 +1315,7 @@ oEditor.ChangeProperty(
 oEditor.Unite(
 	[
 		"NAME:Selections",
-		"Selections:="		, str_rx
+		"Selections:="		, "$str_rx"
 	], 
 	[
 		"NAME:UniteParameters",
@@ -1316,9 +1362,9 @@ oEditor.CreateRectangle(
 		"IsCovered:="		, True,
 		"XStart:="		, "w1/2+space2+5mm",
 		"YStart:="		, "-l1-space2-d1/2",
-		"ZStart:="		, "offset_tx-d1/2",
+		"ZStart:="		, "offset_rx-d1/2",
 		"Width:="		, "d1",
-		"Height:="		, "-$N2*move_tx+d1",
+		"Height:="		, "-$N2*move_rx+d1",
 		"WhichAxis:="		, "X"
 	], 
 	[
@@ -1370,7 +1416,7 @@ oEditor.CreateRectangle(
 		"IsCovered:="		, True,
 		"XStart:="		, "w1/2+space2+5mm",
 		"YStart:="		, "-l1-space2-d1/2",
-		"ZStart:="		, "offset_tx-d1/2",
+		"ZStart:="		, "offset_rx-d1/2",
 		"Width:="		, "d1",
 		"Height:="		, "-1mm",
 		"WhichAxis:="		, "X"
