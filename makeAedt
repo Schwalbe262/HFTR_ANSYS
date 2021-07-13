@@ -1,3 +1,0 @@
-oProject = oDesktop.NewProject()
-oProject.Rename("C:/Users/USER/Desktop/KTW/Mexwell_201201/ML_v1.aedt", True)
-oProject.SaveAs("D:\\transformer_2021\\ML_v1.aedt", True)
