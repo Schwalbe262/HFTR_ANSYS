@@ -6,28 +6,86 @@ import csv
 import time
 import csv
 import numpy as np
+import math
 
 
 
-REFERENCE_SCRIPT_FILE_NAME = f'D:\\script\\run_ansys_ref.py'
+REFERENCE_SCRIPT_FILE_NAME = f'D:\\script\\run_ansys_ref_v2.py'
 #REFERENCE_SCRIPT_FILE_NAME = "run_ansys_ref.py"
     
 
 def run_simul(version_idx_str):
     #0 Initialize random variables
-    l1 = random.randrange(10,50) #FIXME : change random range.
+    d1 = 6.54
+    move_tx = d1 + 3
+    N1 = random.randrange(1,10)
+    N2 = random.randrange(1,10)
+    N = max(N1,N2)
+    l1 = random.randrange(5,80)
     l2 = random.randrange(50,100)
-    h1 = random.randrange(50,150)
+    h1 = random.randrange(math.ceil((N-1)*move_tx+2*d1),150)
     w1 =  random.randrange(30,200)
+
+    str_tx = "Tx_in,Tx_out,Tx1,"
+    Tx_loop = ""
+    for i in range(1,N1) :
+
+        str_tx = str_tx + f'Tx{i+1}'
+
+        Tx_loop = Tx_loop + "oEditor.Paste()\n"
+        Tx_loop = Tx_loop + "oEditor.Move(\n"
+        Tx_loop = Tx_loop + "   [\n"
+        Tx_loop = Tx_loop + f'    "NAME:Selections",\n'
+        Tx_loop = Tx_loop + f'    "Selections:="		, "Tx{i+1},"\n'
+        Tx_loop = Tx_loop + f'    "NewPartsModelFlag:="	, "Model"\n'
+        Tx_loop = Tx_loop + "   ],\n"
+        Tx_loop = Tx_loop + "   [\n"
+        Tx_loop = Tx_loop + f'    "NAME:TranslateParameters",\n'
+        Tx_loop = Tx_loop + f'    "TranslateVectorX:="	, "0",\n'
+        Tx_loop = Tx_loop + f'    "TranslateVectorY:="	, "0",\n'
+        Tx_loop = Tx_loop + f'    "TranslateVectorZ:="	, -{i}*move_tx+offset_tx\n'
+        Tx_loop = Tx_loop + "   ])\n"
+    str_tx = str_tx[:-1]
+
+    str_rx = "Rx_in,Rx_out,Rx1,"
+    Rx_loop = ""
+    for i in range(1,N2) :
+
+        str_rx = str_rx + f'Rx{i+1}'
+
+        Rx_loop = Rx_loop + "oEditor.Paste()\n"
+        Rx_loop = Rx_loop + "oEditor.Move(\n"
+        Rx_loop = Rx_loop + "   [\n"
+        Rx_loop = Rx_loop + f'    "NAME:Selections",\n'
+        Rx_loop = Rx_loop + f'    "Selections:="		, "Rx{i+1},"\n'
+        Rx_loop = Rx_loop + f'    "NewPartsModelFlag:="	, "Model"\n'
+        Rx_loop = Rx_loop + "   ],\n"
+        Rx_loop = Rx_loop + "   [\n"
+        Rx_loop = Rx_loop + f'    "NAME:TranslateParameters",\n'
+        Rx_loop = Rx_loop + f'    "TranslateVectorX:="	, "0",\n'
+        Rx_loop = Rx_loop + f'    "TranslateVectorY:="	, "0",\n'
+        Rx_loop = Rx_loop + f'    "TranslateVectorZ:="	, -{i}*move_tx+offset_tx\n'
+        Rx_loop = Rx_loop + "   ])\n"
+    str_rx = str_rx[:-1]
+
+
     #FIXME : add some variables
 
     #0.5 Config Identifier-Variable set.
     config = {
         "$VERSION_IDX_STR"  :   version_idx_str,
+        "$N1"              :   N1,
+        "$N2"              :   N2,
         "$l1"              :   l1,
         "$l2"              :   l2,
         "$h1"              :   h1,
-        "$w1"              :   w1
+        "$w1"              :   w1,
+        "$N1"              :   N1,
+        "$N2"              :   N2,
+        "$Tx_loop"              :   Tx_loop,
+        "$str_tx"              :   str_tx,
+        "$Rx_loop"              :   Rx_loop,
+        "$str_rx"              :   str_rx
         #FIXME : add some idt : variables
     }
 
@@ -35,12 +93,12 @@ def run_simul(version_idx_str):
     folder_name = f'SIMUL_{version_idx_str}'
     #os.mkdir(folder_name)
     #os.mkdir(os.path.join('ML_v1',folder_name))
-    os.mkdir(f'D:\script\ML_v1\SIMUL_{version_idx_str}')
+    os.mkdir(f'D:\script\ML_v2\SIMUL_{version_idx_str}')
 
     #2 Make Variable info file
     #with open(os.path.join(folder_name,"info.yaml"), "w") as info_file:
     #with open(os.path.join('ML_v1',folder_name,"info.yaml"), "w") as info_file:
-    with open(f'D:\script\ML_v1\SIMUL_{version_idx_str}\info.yaml', "w") as info_file:
+    with open(f'D:\script\ML_v2\SIMUL_{version_idx_str}\info.yaml', "w") as info_file:
         yaml.dump(config,info_file)
 
     #3 Make python script file
@@ -56,8 +114,8 @@ def run_simul(version_idx_str):
 
     #Save file
     #filepath = 'D:\script\ML_v1\run_ansys_{version_idx_str}.py'
-    filepath = os.path.join('ML_v1',folder_name,f'run_ansys_{version_idx_str}.py')
-    with open(f'D:\\script\\ML_v1\\SIMUL_{version_idx_str}\\run_ansys_{version_idx_str}.py',"w") as f :
+    filepath = os.path.join('ML_v2',folder_name,f'run_ansys_{version_idx_str}.py')
+    with open(f'D:\\script\\ML_v2\\SIMUL_{version_idx_str}\\run_ansys_{version_idx_str}.py',"w") as f :
         f.write(ref_script_str)
 
 
@@ -66,22 +124,23 @@ def run_simul(version_idx_str):
     
     #4 make batch file.
     
-    filepath2 = os.path.join('ML_v1',folder_name,f'run_bat_{version_idx_str}.bat')
-    with open(f'D:\\script\\ML_v1\\SIMUL_{version_idx_str}\\run_bat_{version_idx_str}.bat',"w") as f :
-        f.write(f'"C:\\Program Files\\AnsysEM\\AnsysEM20.1\\Win64\\ansysedt.exe" -runscriptandexit "D:\\script\\ML_v1\\SIMUL_{version_idx_str}\\run_ansys_{version_idx_str}.py"')
-        
-    workingDir = f'D:\script\ML_v1\SIMUL_{version_idx_str}'
-    executeFile = f'D:\script\ML_v1\SIMUL_{version_idx_str}\\run_bat_{version_idx_str}.bat'
+    filepath2 = os.path.join('ML_v2',folder_name,f'run_bat_{version_idx_str}.bat')
+    with open(f'D:\\script\\ML_v2\\SIMUL_{version_idx_str}\\run_bat_{version_idx_str}.bat',"w") as f :
+        #f.write(f'"C:\\Program Files\\AnsysEM\\AnsysEM20.1\\Win64\\ansysedt.exe" -runscriptandexit "D:\\script\\ML_v1\\SIMUL_{version_idx_str}\\run_ansys_{version_idx_str}.py"')
+        f.write(f'"C:\\Program Files\\AnsysEM\\AnsysEM20.1\\Win64\\ansysedt.exe" -runscript "D:\\script\\ML_v2\\SIMUL_{version_idx_str}\\run_ansys_{version_idx_str}.py"')
+
+    workingDir = f'D:\script\ML_v2\SIMUL_{version_idx_str}'
+    executeFile = f'D:\script\ML_v2\SIMUL_{version_idx_str}\\run_bat_{version_idx_str}.bat'
     os.chdir(workingDir)
     os.system(executeFile)
     
-    with open(f'D:\script\ML_v1_data\Data {version_idx_str}.csv',"r") as f :
+    with open(f'D:\script\ML_v2_data\Data {version_idx_str}.csv',"r") as f :
         rdr = csv.reader(f)
 
         for line in rdr:
             a = 1
             
-    with open(f'D:\script\ML_v1_data\Data.csv',"a", encoding='utf-8', newline='') as f :
+    with open(f'D:\script\ML_v2_data\Data.csv',"a", encoding='utf-8', newline='') as f :
         
         tmp = np.concatenate((l1, l2, h1, w1, line[1], line[2], line[3], line[4], line[5]), axis=None)
         wr = csv.writer(f)
@@ -91,11 +150,11 @@ def run_simul(version_idx_str):
     
 
 
-for i in range(195, 1001): 
+for i in range(1, 2): 
 
     try :
         run_simul(i)
-        os.remove(f'D:\script\ML_aedt\ML_v1.aedt.lock')
+        os.remove(f'D:\script\ML_aedt\ML_v2.aedt.lock')
     except :
         time.sleep(1)	
 
