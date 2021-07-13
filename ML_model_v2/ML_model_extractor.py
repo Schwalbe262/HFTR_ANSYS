@@ -4,7 +4,7 @@
 import pandas
 import pycaret
 
-filename = "Data_v1_N30.csv"
+filename = "Data_v2_N150.csv"
 
 csv = pandas.read_csv(filename)
 csv = csv.dropna(axis=0).reset_index(drop=True)#drop NaN
@@ -34,4 +34,4 @@ blender = blend_models(estimator_list = top3)
 best = automl(optimize = 'RMSE')
 
 
-save_model(best, "ML_model_v1_num5")
+save_model(best, "ML_model_v2_num5")
