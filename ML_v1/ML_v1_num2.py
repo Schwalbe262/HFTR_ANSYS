@@ -28,4 +28,4 @@ bagged_top3 = [ensemble_model(i) for i in tuned_top3]
 
 blender = blend_models(estimator_list = top3)
 
-best1 = automl(optimize = 'RMSE')
+best2 = automl(optimize = 'RMSE')
