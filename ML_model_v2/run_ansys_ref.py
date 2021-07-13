@@ -67,7 +67,7 @@ oDesign.ChangeProperty(
 					"NAME:air",
 					"PropType:="		, "VariableProp",
 					"UserDef:="		, True,
-					"Value:="		, "200mm"
+					"Value:="		, "$airmm"
 				]
 			]
 		]
@@ -645,7 +645,7 @@ oEditor.Copy(
 		"Selections:="		, "Tx1"
 	])	
 
-"$Tx_loop"
+$Tx_loop
 
 	
 oEditor.Move(
@@ -1043,7 +1043,7 @@ oEditor.Copy(
 	])
 	
 
-"$Rx_loop"
+$Rx_loop
 
 oEditor.Move(
 	[
