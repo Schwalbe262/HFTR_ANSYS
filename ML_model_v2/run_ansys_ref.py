@@ -26,8 +26,8 @@ oModule.InsertSetup("HfssDriven",
 		"AdaptMultipleFreqs:="	, False,
 		"Frequency:="		, "40kHz",
 		"MaxDeltaE:="		, 0.1,
-		"MaximumPasses:="	, 3,
-		"MinimumPasses:="	, 3,
+		"MaximumPasses:="	, 5,
+		"MinimumPasses:="	, 5,
 		"MinimumConvergedPasses:=", 1,
 		"PercentRefinement:="	, 30,
 		"IsEnabled:="		, True,
@@ -309,6 +309,50 @@ oDesign.ChangeProperty(
 					"PropType:="		, "VariableProp",
 					"UserDef:="		, True,
 					"Value:="		, "2*move_tx"
+					
+				]
+			]
+		]
+	])
+
+oDesign.ChangeProperty(
+	[
+		"NAME:AllTabs",
+		[
+			"NAME:LocalVariableTab",
+			[
+				"NAME:PropServers", 
+				"LocalVariables"
+			],
+			[
+				"NAME:NewProps",
+				[
+					"NAME:N1",
+					"PropType:="		, "VariableProp",
+					"UserDef:="		, True,
+					"Value:="		, "$N1"
+					
+				]
+			]
+		]
+	])
+
+oDesign.ChangeProperty(
+	[
+		"NAME:AllTabs",
+		[
+			"NAME:LocalVariableTab",
+			[
+				"NAME:PropServers", 
+				"LocalVariables"
+			],
+			[
+				"NAME:NewProps",
+				[
+					"NAME:N2",
+					"PropType:="		, "VariableProp",
+					"UserDef:="		, True,
+					"Value:="		, "$N2"
 					
 				]
 			]
@@ -599,14 +643,11 @@ oEditor.Copy(
 	[
 		"NAME:Selections",
 		"Selections:="		, "Tx1"
-	])
+	])	
 
-oEditor.Paste()
+"$Tx_loop"
 
-oEditor.Paste()
-
-oEditor.Paste()
-
+	
 oEditor.Move(
 	[
 		"NAME:Selections",
@@ -620,44 +661,6 @@ oEditor.Move(
 		"TranslateVectorZ:="	, "offset_tx"
 	])
 
-oEditor.Move(
-	[
-		"NAME:Selections",
-		"Selections:="		, "Tx2",
-		"NewPartsModelFlag:="	, "Model"
-	], 
-	[
-		"NAME:TranslateParameters",
-		"TranslateVectorX:="	, "0",
-		"TranslateVectorY:="	, "0",
-		"TranslateVectorZ:="	, "-1*move_tx+offset_tx"
-	])
-
-oEditor.Move(
-	[
-		"NAME:Selections",
-		"Selections:="		, "Tx3",
-		"NewPartsModelFlag:="	, "Model"
-	], 
-	[
-		"NAME:TranslateParameters",
-		"TranslateVectorX:="	, "0",
-		"TranslateVectorY:="	, "0",
-		"TranslateVectorZ:="	, "-2*move_tx+offset_tx"
-	])
-
-oEditor.Move(
-	[
-		"NAME:Selections",
-		"Selections:="		, "Tx4",
-		"NewPartsModelFlag:="	, "Model"
-	], 
-	[
-		"NAME:TranslateParameters",
-		"TranslateVectorX:="	, "0",
-		"TranslateVectorY:="	, "0",
-		"TranslateVectorZ:="	, "-3*move_tx+offset_tx"
-	])
 
 oEditor.ChangeProperty(
 	[
@@ -688,7 +691,7 @@ oEditor.ChangeProperty(
 			"NAME:Geometry3DPolylineTab",
 			[
 				"NAME:PropServers", 
-				"Tx4:CreatePolyline:2:Segment6"
+				"Tx$N1:CreatePolyline:2:Segment6"
 			],
 			[
 				"NAME:ChangedProps",
@@ -795,13 +798,13 @@ oEditor.CreatePolyline(
 				"NAME:PLPoint",
 				"X:="			, "w1/2+space1+0mm",
 				"Y:="			, "-l1-space1",
-				"Z:="			, "offset_tx-4*move_tx"
+				"Z:="			, "offset_tx-$N1*move_tx"
 			],
 			[
 				"NAME:PLPoint",
 				"X:="			, "w1/2+space1+5mm",
 				"Y:="			, "-l1-space1",
-				"Z:="			, "offset_tx-4*move_tx"
+				"Z:="			, "offset_tx-$N1*move_tx"
 			]
 		],
 		[
@@ -869,7 +872,7 @@ oEditor.ChangeProperty(
 oEditor.Unite(
 	[
 		"NAME:Selections",
-		"Selections:="		, "Tx_in,Tx_out,Tx1,Tx2,Tx3,Tx4"
+		"Selections:="		, "$str_tx"
 	], 
 	[
 		"NAME:UniteParameters",
@@ -1038,12 +1041,9 @@ oEditor.Copy(
 		"NAME:Selections",
 		"Selections:="		, "Rx1"
 	])
+	
 
-oEditor.Paste()
-
-oEditor.Paste()
-
-oEditor.Paste()
+"$Rx_loop"
 
 oEditor.Move(
 	[
@@ -1058,44 +1058,6 @@ oEditor.Move(
 		"TranslateVectorZ:="	, "offset_tx"
 	])
 
-oEditor.Move(
-	[
-		"NAME:Selections",
-		"Selections:="		, "Rx2",
-		"NewPartsModelFlag:="	, "Model"
-	], 
-	[
-		"NAME:TranslateParameters",
-		"TranslateVectorX:="	, "0",
-		"TranslateVectorY:="	, "0",
-		"TranslateVectorZ:="	, "-1*move_tx+offset_tx"
-	])
-
-oEditor.Move(
-	[
-		"NAME:Selections",
-		"Selections:="		, "Rx3",
-		"NewPartsModelFlag:="	, "Model"
-	], 
-	[
-		"NAME:TranslateParameters",
-		"TranslateVectorX:="	, "0",
-		"TranslateVectorY:="	, "0",
-		"TranslateVectorZ:="	, "-2*move_tx+offset_tx"
-	])
-
-oEditor.Move(
-	[
-		"NAME:Selections",
-		"Selections:="		, "Rx4",
-		"NewPartsModelFlag:="	, "Model"
-	], 
-	[
-		"NAME:TranslateParameters",
-		"TranslateVectorX:="	, "0",
-		"TranslateVectorY:="	, "0",
-		"TranslateVectorZ:="	, "-3*move_tx+offset_tx"
-	])
 
 oEditor.ChangeProperty(
 	[
@@ -1126,7 +1088,7 @@ oEditor.ChangeProperty(
 			"NAME:Geometry3DPolylineTab",
 			[
 				"NAME:PropServers", 
-				"Rx4:CreatePolyline:2:Segment6"
+				"Rx$N2:CreatePolyline:2:Segment6"
 			],
 			[
 				"NAME:ChangedProps",
@@ -1233,13 +1195,13 @@ oEditor.CreatePolyline(
 				"NAME:PLPoint",
 				"X:="			, "w1/2+space2+0mm",
 				"Y:="			, "-l1-space2",
-				"Z:="			, "offset_tx-4*move_tx"
+				"Z:="			, "offset_tx-$N2*move_tx"
 			],
 			[
 				"NAME:PLPoint",
 				"X:="			, "w1/2+space2+5mm",
 				"Y:="			, "-l1-space2",
-				"Z:="			, "offset_tx-4*move_tx"
+				"Z:="			, "offset_tx-$N2*move_tx"
 			]
 		],
 		[
@@ -1307,7 +1269,7 @@ oEditor.ChangeProperty(
 oEditor.Unite(
 	[
 		"NAME:Selections",
-		"Selections:="		, "Rx_in,Rx_out,Rx1,Rx2,Rx3,Rx4"
+		"Selections:="		, str_rx
 	], 
 	[
 		"NAME:UniteParameters",
@@ -1329,7 +1291,7 @@ oEditor.CreateRectangle(
 		"YStart:="		, "-l1-space1-d1/2",
 		"ZStart:="		, "offset_tx-d1/2",
 		"Width:="		, "d1",
-		"Height:="		, "-4*move_tx+d1",
+		"Height:="		, "-$N1*move_tx+d1",
 		"WhichAxis:="		, "X"
 	], 
 	[
@@ -1356,7 +1318,7 @@ oEditor.CreateRectangle(
 		"YStart:="		, "-l1-space2-d1/2",
 		"ZStart:="		, "offset_tx-d1/2",
 		"Width:="		, "d1",
-		"Height:="		, "-4*move_tx+d1",
+		"Height:="		, "-$N2*move_tx+d1",
 		"WhichAxis:="		, "X"
 	], 
 	[
