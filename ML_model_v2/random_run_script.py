@@ -152,7 +152,6 @@ for i in range(1, 1001):
         time.sleep(1)
         os.remove(f'D:\script\ML_aedt\ML_v2.aedt.lock')
     except :
-        os.remove(f'D:\script\ML_aedt\ML_v2.aedt.lock')
         time.sleep(1)	
 
     
